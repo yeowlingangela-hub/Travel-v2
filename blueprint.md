@@ -1,46 +1,40 @@
-# Project Blueprint: Travel Itinerary Recommendation App
+# Travel-v2 Project Blueprint
 
-## 1. Overview
+## Overview
+This project is a framework-less web application (HTML, CSS, JavaScript) designed to showcase travel destinations and information. It aims for a modern, visually appealing, and responsive user experience.
 
-This application will provide users with a recommended travel itinerary based on their desired destination and travel dates. The app will feature a clean, modern, and responsive design, ensuring a great user experience on both mobile and desktop devices.
+## Current Features
+- Basic HTML structure (index.html)
+- Styling (style.css)
+- JavaScript functionality (main.js)
+- Integration with Firebase Studio development environment.
+- Git repository for version control.
 
-## 2. Style, Design, and Features
+## Plan for "Recommended Hotels" Feature
 
-### Core Functionality
-- **Input Form:** Users can enter a destination, start date, and end date.
-- **Itinerary Generation:** Based on the user's input, the app will display a day-by-day itinerary.
-- **Attraction Details:** Each itinerary item will include:
-    - The name of the attraction.
-    - A brief description.
-- **Food & Drink:** Recommendations for cafes and restaurants near each attraction.
-- **Accommodation:** A list of recommended hotels at the destination.
-- **Data:** The app will use mock data for now, with a clear note about this limitation. Future development could integrate a real travel API.
+### Objective
+Add a "Recommended Hotels" section to the `index.html` page, displaying hotel information and relevant images for various locations. The changes will be pushed to the GitHub repository and reflected on Cloudflare Pages.
 
-### Visual Design
-- **Aesthetics:** The design will be modern, clean, and visually balanced with ample white space.
-- **Layout:** A responsive, mobile-first design that adapts to all screen sizes. A single-page application interface for ease of use.
-- **Color Palette:** A vibrant and energetic color scheme will be used to create a positive and exciting user experience.
-- **Typography:** Expressive and clear typography will be used to create a strong visual hierarchy (e.g., larger fonts for headings, clear fonts for body text).
-- **Iconography:** Icons will be used to enhance usability and provide quick visual cues for different sections (e.g., an icon for attractions, cafes, hotels).
-- **Effects:** Subtle drop shadows on cards and interactive elements will create a sense of depth and a "lifted" feel. A subtle texture will be applied to the background to add a premium feel.
-- **Interactivity:** Buttons and other interactive elements will have a "glow" effect on hover to provide clear feedback to the user.
+### Assumptions
+1.  **Locations**: I will assume a few popular travel destinations (e.g., Paris, Tokyo, New York) and recommend a hotel for each.
+2.  **Images**: I will use placeholder images for now. I will provide comments in the code where actual image URLs should be placed.
+3.  **Implementation Style**: I will follow the modern web standards (HTML, CSS, JavaScript) and leverage Web Components if appropriate for reusability, as outlined in `GEMINI.md`.
+4.  **Cloudflare Pages**: It is assumed that the GitHub repository is already connected to Cloudflare Pages for automatic deployments upon push.
 
-### Technology
-- **Frontend:** HTML, CSS, JavaScript
-- **Web Components:** Custom elements will be used to create reusable UI components (e.g., for itinerary cards).
-- **ES Modules:** JavaScript will be organized into modules for better code structure and maintainability.
-
-## 3. Current Plan
-
-1.  **Create `blueprint.md`:** Establish the project's foundation and plan.
-2.  **Develop `index.html`:**
-    -   Create the main HTML structure including a header, input form, and a container for the itinerary results.
-3.  **Develop `style.css`:**
-    -   Implement the visual design as described above, ensuring a responsive and modern look and feel.
-4.  **Develop `main.js`:**
-    -   Define a custom element for the itinerary cards.
-    -   Create mock data for at least two travel destinations.
-    -   Implement the logic to handle the form submission, retrieve the appropriate mock data, and dynamically generate the itinerary on the page.
-5.  **Review and Refine:**
-    -   Test the application for functionality and visual appeal.
-    -   Ensure there are no console errors.
+### Steps
+1.  **Create blueprint.md**: (Already doing this)
+2.  **Update index.html**:
+    *   Add a new `section` element with an appropriate ID (e.g., `recommended-hotels`).
+    *   Inside this section, create `div` elements for each recommended hotel, including:
+        *   Hotel Name (h3)
+        *   Location (p)
+        *   Description (p)
+        *   Placeholder Image (img)
+        *   Link to book (a)
+3.  **Update style.css**:
+    *   Add styles for the `recommended-hotels` section and its child elements to ensure a clean and responsive layout.
+    *   Consider using CSS Grid or Flexbox for layout.
+4.  **Update main.js (Optional)**:
+    *   If dynamic content loading or interactive elements are deemed necessary for this feature (e.g., a simple carousel for hotel images), implement them here. For the initial implementation, this might not be strictly necessary, focusing on static content first.
+5.  **Review and Verify**: Check the changes in a local preview to ensure correctness and visual appeal.
+6.  **Commit and Push**: Commit the changes to the Git repository with a clear commit message and push to the `main` branch.
