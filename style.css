@@ -1,1 +1,145 @@
-/* Add styles here */
+/*
+- Resort background image.
+- Frosted glass effect for cards using backdrop-filter.
+- Tropical color palette (sky blue, sandy beige).
+*/
+
+@layer base, components;
+
+@layer base {
+    :root {
+        /* Tropical Resort Theme */
+        --primary-color: oklch(60% 0.15 220);      /* Sky Blue */
+        --accent-color: oklch(85% 0.1 80);        /* Sandy Beige */
+        --background-color: oklch(98% 0.01 220);   /* Very light blue */
+        --text-color: oklch(20% 0.02 220);         /* Dark Blue */
+        --card-background: oklch(98% 0.01 220 / 60%); /* Translucent light blue */
+        --shadow-color: oklch(20% 0.03 220);        /* Muted blue shadow */
+        --glow-color: oklch(85% 0.1 80 / 70%);    /* Sandy Beige glow */
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-image: url('https://paxahere.com/1920/1080/?beach,resort,tropical');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: var(--text-color);
+        margin: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 600;
+    }
+}
+
+@layer components {
+    header {
+        background-color: var(--card-background);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        color: var(--text-color);
+        padding: 1.5rem 1rem;
+        text-align: center;
+        border-bottom: 2px solid oklch(from var(--primary-color) l a / 50%);
+    }
+
+    h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        color: var(--primary-color);
+        text-shadow: 1px 1px 5px oklch(from var(--shadow-color) l a / 30%);
+    }
+
+    main {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    #itinerary-form, itinerary-card, .hotels-card {
+        background: var(--card-background);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 12px;
+        box-shadow: 
+            0 1px 3px 0 oklch(from var(--shadow-color) l a / 20%),
+            0 5px 15px 0 oklch(from var(--shadow-color) l a / 15%),
+            0 20px 40px -10px oklch(from var(--shadow-color) l a / 10%);
+        border: 1px solid oklch(100% 0 0 / 20%); /* Faint white border */
+    }
+
+    #itinerary-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+        padding: 2rem;
+    }
+
+    #itinerary-form input, #itinerary-form button {
+        padding: 1rem;
+        border-radius: 6px;
+        font-size: 1rem;
+        border: 1px solid transparent;
+    }
+
+    #itinerary-form input {
+        flex-grow: 1;
+        background-color: oklch(100% 0 0 / 50%);
+        color: var(--text-color);
+    }
+
+    #itinerary-form input:focus {
+        outline: 2px solid var(--accent-color);
+    }
+
+    #itinerary-form button {
+        background-color: var(--accent-color);
+        color: var(--text-color);
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.3s ease-in-out;
+    }
+
+    #itinerary-form button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 25px var(--glow-color), 0 5px 15px oklch(from var(--shadow-color) l a / 20%);
+    }
+
+    #itinerary-results {
+        display: grid;
+        gap: 2.5rem;
+    }
+    
+    itinerary-card, .hotels-card {
+        container-type: inline-size;
+        overflow: hidden;
+    }
+
+    .hotels-card {
+        padding: 1.5rem;
+    }
+
+    .hotels-card h2 {
+        color: var(--primary-color);
+        border-bottom: 3px solid var(--accent-color);
+        padding-bottom: 0.5rem;
+    }
+
+    .hotels-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 0;
+    }
+
+    .hotels-card li {
+        padding: 0.75rem 0.5rem;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+
+    .hotels-card li:nth-child(odd) {
+        background-color: oklch(from var(--accent-color) l a / 20%);
+    }
+}

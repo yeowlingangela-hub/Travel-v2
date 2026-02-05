@@ -1,14 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Itinerary Recommender</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <header>
+        <h1>Travel Itinerary Recommender</h1>
+    </header>
+    <main>
+        <form id="itinerary-form">
+            <input type="text" id="destination" placeholder="Enter destination (e.g., Paris, Tokyo)" required>
+            <input type="text" id="start-date" placeholder="Start Date (YYYY-MM-DD)" required onfocus="(this.type='date')" onblur="(this.type='text')">
+            <input type="text" id="end-date" placeholder="End Date (YYYY-MM-DD)" required onfocus="(this.type='date')" onblur="(this.type='text')">
+            <button type="submit">Generate Itinerary</button>
+        </form>
+        <div id="itinerary-results"></div>
+    </main>
+    <script src="main.js" type="module"></script>
 </body>
 </html>
