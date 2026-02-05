@@ -15,6 +15,10 @@ const mockData = {
             { name: 'The Ritz Paris', bookingLink: 'https://www.ritzparis.com/en-gb' },
             { name: 'Le Bristol Paris', bookingLink: 'https://www.oetkercollection.com/hotels/le-bristol-paris/' },
             { name: 'Four Seasons Hotel George V', bookingLink: 'https://www.fourseasons.com/paris/' }
+        ],
+        flights: [
+            { flightNumber: 'SQ335', departureTime: '10:00 (CDG)', arrivalTime: '06:30 (+1) (SIN)', price: 'SGD 900', bookingLink: 'https://www.singaporeair.com/en_UK/sg/plan-book/book-flight/' },
+            { flightNumber: 'SQ333', departureTime: '21:00 (CDG)', arrivalTime: '17:30 (+1) (SIN)', price: 'SGD 850', bookingLink: 'https://www.singaporeair.com/en_UK/sg/plan-book/book-flight/' }
         ]
     },
     tokyo: {
@@ -33,6 +37,10 @@ const mockData = {
             { name: 'Park Hyatt Tokyo', bookingLink: 'https://www.hyatt.com/en-US/hotel/japan/park-hyatt-tokyo/tyoph' },
             { name: 'Mandarin Oriental, Tokyo', bookingLink: 'https://www.mandarinoriental.com/tokyo/nihonbashi/luxury-hotel' },
             { name: 'The Peninsula Tokyo', bookingLink: 'https://www.peninsula.com/en/tokyo/luxury-hotel' }
+        ],
+        flights: [
+            { flightNumber: 'SQ637', departureTime: '09:15 (NRT)', arrivalTime: '15:20 (SIN)', price: 'SGD 750', bookingLink: 'https://www.singaporeair.com/en_UK/sg/plan-book/book-flight/' },
+            { flightNumber: 'SQ631', departureTime: '14:30 (NRT)', arrivalTime: '20:35 (SIN)', price: 'SGD 700', bookingLink: 'https://www.singaporeair.com/en_UK/sg/plan-book/book-flight/' }
         ]
     },
     nyc: {
@@ -51,6 +59,10 @@ const mockData = {
             { name: 'The Plaza Hotel', bookingLink: 'https://www.theplazany.com/' },
             { name: 'Mandarin Oriental, New York', bookingLink: 'https://www.mandarinoriental.com/new-york/manhattan/luxury-hotel' },
             { name: 'The St. Regis New York', bookingLink: 'https://www.marriott.com/hotels/travel/nycxr-the-st-regis-new-york/' }
+        ],
+        flights: [
+            { flightNumber: 'SQ25', departureTime: '08:30 (JFK)', arrivalTime: '17:00 (+1) (SIN)', price: 'SGD 1500', bookingLink: 'https://www.singaporeair.com/en_UK/sg/plan-book/book-flight/' },
+            { flightNumber: 'SQ23', departureTime: '21:00 (JFK)', arrivalTime: '05:30 (+2) (SIN)', price: 'SGD 1400', bookingLink: 'https://www.singaporeair.com/en_UK/sg/plan-book/book-flight/' }
         ]
     }
 };
@@ -186,4 +198,21 @@ document.getElementById('itinerary-form').addEventListener('submit', function(ev
         </ul>
     `;
     resultsDiv.appendChild(hotelsCard);
+
+    // Add Flight Recommendations
+    const flightsCard = document.createElement('div');
+    flightsCard.className = 'hotels-card'; // Reusing hotels-card styling class for consistency
+    flightsCard.innerHTML = `
+        <h2><img src="https://img.icons8.com/ios-filled/50/000000/airplane-take-off.png" class="icon" alt="flight icon" style="filter: none; width: 32px; height: 32px; margin-right: 12px; vertical-align: bottom;">Flight Recommendations (Singapore Airlines)</h2>
+        <ul>
+            ${destinationData.flights.map(flight => `
+                <li>
+                    <strong>Flight ${flight.flightNumber}</strong>: ${flight.departureTime} - ${flight.arrivalTime}
+                    <br>Price: ${flight.price}
+                    <br><a href="${flight.bookingLink}" target="_blank">Book Flight</a>
+                </li>
+            `).join('')}
+        </ul>
+    `;
+    resultsDiv.appendChild(flightsCard);
 });
