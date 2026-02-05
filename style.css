@@ -57,7 +57,7 @@
         margin: auto;
     }
 
-    #itinerary-form, itinerary-card, .hotels-card {
+    #itinerary-form, itinerary-card, .hotels-card, #feedback {
         background: var(--card-background);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
@@ -77,24 +77,24 @@
         padding: 2rem;
     }
 
-    #itinerary-form input, #itinerary-form button {
+    #itinerary-form input, #itinerary-form button, #feedback input, #feedback textarea, #feedback button {
         padding: 1rem;
         border-radius: 6px;
         font-size: 1rem;
         border: 1px solid transparent;
     }
 
-    #itinerary-form input {
+    #itinerary-form input, #feedback input, #feedback textarea {
         flex-grow: 1;
         background-color: oklch(100% 0 0 / 50%);
         color: var(--text-color);
     }
 
-    #itinerary-form input:focus {
+    #itinerary-form input:focus, #feedback input:focus, #feedback textarea:focus {
         outline: 2px solid var(--accent-color);
     }
 
-    #itinerary-form button {
+    #itinerary-form button, #feedback button {
         background-color: var(--accent-color);
         color: var(--text-color);
         font-weight: bold;
@@ -102,7 +102,7 @@
         transition: transform 0.2s ease, box-shadow 0.3s ease-in-out;
     }
 
-    #itinerary-form button:hover {
+    #itinerary-form button:hover, #feedback button:hover {
         transform: translateY(-2px);
         box-shadow: 0 0 25px var(--glow-color), 0 5px 15px oklch(from var(--shadow-color) l a / 20%);
     }
@@ -158,7 +158,7 @@
         border: 1px solid oklch(100% 0 0 / 20%);
     }
 
-    #recommended-hotels h2 {
+    #recommended-hotels h2, #feedback h2 {
         font-size: clamp(1.8rem, 4vw, 2.5rem);
         color: var(--primary-color);
         text-align: center;
@@ -238,5 +238,15 @@
         background-color: oklch(from var(--accent-color) l c h / 0.8); /* Slightly darker accent */
         transform: translateY(-1px);
     }
-}
 
+    #feedback {
+        margin-top: 3rem;
+        padding: 2rem;
+    }
+
+    #feedback form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
