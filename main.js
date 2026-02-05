@@ -34,6 +34,24 @@ const mockData = {
             { name: 'Mandarin Oriental, Tokyo', bookingLink: 'https://www.mandarinoriental.com/tokyo/nihonbashi/luxury-hotel' },
             { name: 'The Peninsula Tokyo', bookingLink: 'https://www.peninsula.com/en/tokyo/luxury-hotel' }
         ]
+    },
+    nyc: {
+        attractions: [
+            { name: 'Statue of Liberty', description: 'Iconic colossal neoclassical sculpture on Liberty Island in New York Harbor.', image: 'https://via.placeholder.com/200x150?text=Statue+of+Liberty' },
+            { name: 'Times Square', description: 'A major commercial intersection, tourist destination, entertainment center, and neighborhood in Midtown Manhattan.', image: 'https://via.placeholder.com/200x150?text=Times+Square' },
+            { name: 'Central Park', description: 'An urban park in New York City, between the Upper West Side and Upper East Side of Manhattan.', image: 'https://via.placeholder.com/200x150?text=Central+Park' },
+            { name: 'Empire State Building', description: 'A 102-story Art Deco skyscraper in Midtown Manhattan.', image: 'https://via.placeholder.com/200x150?text=Empire+State+Building' },
+            { name: 'Brooklyn Bridge', description: 'A hybrid cable-stayed/suspension bridge in New York City, connecting Manhattan and Brooklyn.', image: 'https://via.placeholder.com/200x150?text=Brooklyn+Bridge' },
+            { name: 'Metropolitan Museum of Art', description: 'The largest art museum in the United States.', image: 'https://via.placeholder.com/200x150?text=Metropolitan+Museum' },
+            { name: 'Broadway Shows', description: 'Experience world-class theater productions in the Theatre District.', image: 'https://via.placeholder.com/200x150?text=Broadway' }
+        ],
+        cafes: ['Blue Bottle Coffee', 'Stumptown Coffee Roasters', 'Joe Coffee Company'],
+        restaurants: ['Per Se', 'Eleven Madison Park', 'Carbone'],
+        hotels: [
+            { name: 'The Plaza Hotel', bookingLink: 'https://www.theplazany.com/' },
+            { name: 'Mandarin Oriental, New York', bookingLink: 'https://www.mandarinoriental.com/new-york/manhattan/luxury-hotel' },
+            { name: 'The St. Regis New York', bookingLink: 'https://www.marriott.com/hotels/travel/nycxr-the-st-regis-new-york/' }
+        ]
     }
 };
 
@@ -129,7 +147,7 @@ document.getElementById('itinerary-form').addEventListener('submit', function(ev
     const dataKey = Object.keys(mockData).find(key => destination.includes(key));
 
     if (!dataKey) {
-        resultsDiv.innerHTML = '<p style="text-align: center;">Sorry, we don\'t have information for that destination yet. Try \'Paris\' or \'Tokyo\'.</p>';
+        resultsDiv.innerHTML = '<p style="text-align: center;">Sorry, we don\'t have information for that destination yet. Try \'Paris\', \'Tokyo\', or \'New York\'.</p>';
         return;
     }
 
