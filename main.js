@@ -11,7 +11,11 @@ const mockData = {
         ],
         cafes: ['Café de Flore', 'Les Deux Magots', 'La Maison Rose'],
         restaurants: ['Le Jules Verne', 'L\'Ambroisie', 'Arpège'],
-        hotels: ['The Ritz Paris', 'Le Bristol Paris', 'Four Seasons Hotel George V']
+        hotels: [
+            { name: 'The Ritz Paris', bookingLink: 'https://www.ritzparis.com/en-gb' },
+            { name: 'Le Bristol Paris', bookingLink: 'https://www.oetkercollection.com/hotels/le-bristol-paris/' },
+            { name: 'Four Seasons Hotel George V', bookingLink: 'https://www.fourseasons.com/paris/' }
+        ]
     },
     tokyo: {
         attractions: [
@@ -25,7 +29,11 @@ const mockData = {
         ],
         cafes: ['Caf\u00e9 de l\'Ambre', 'Chatei Hatou', 'Glitch Coffee & Roasters'],
         restaurants: ['Sukiyabashi Jiro', 'Narisawa', 'Quintessence'],
-        hotels: ['Park Hyatt Tokyo', 'Mandarin Oriental, Tokyo', 'The Peninsula Tokyo']
+        hotels: [
+            { name: 'Park Hyatt Tokyo', bookingLink: 'https://www.hyatt.com/en-US/hotel/japan/park-hyatt-tokyo/tyoph' },
+            { name: 'Mandarin Oriental, Tokyo', bookingLink: 'https://www.mandarinoriental.com/tokyo/nihonbashi/luxury-hotel' },
+            { name: 'The Peninsula Tokyo', bookingLink: 'https://www.peninsula.com/en/tokyo/luxury-hotel' }
+        ]
     }
 };
 
@@ -132,24 +140,16 @@ document.getElementById('itinerary-form').addEventListener('submit', function(ev
     }
 
     const destinationData = mockData[dataKey];
-    const usedAttractions = new Set();
+    // const usedAttractions = new Set(); // No longer needed with cycling logic
 
     for (let i = 0; i < tripDays; i++) {
         const currentDate = new Date(startDate);
         currentDate.setDate(startDate.getDate() + i);
         const dateString = currentDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
-        let attraction;
-        for (const attr of destinationData.attractions) {
-            if (!usedAttractions.has(attr.name)) {
-                attraction = attr;
-                usedAttractions.add(attr.name);
-                break;
-            }
-        }
-        if (!attraction) {
-            attraction = { name: 'No new attractions available', description: 'Consider re-visiting a favorite spot or exploring a new neighborhood!' };
-        }
+        // Cycle through attractions
+        const attractionIndex = i % destinationData.attractions.length;
+        const attraction = destinationData.attractions[attractionIndex];
 
         const cafe = destinationData.cafes[i % destinationData.cafes.length];
         const restaurant = destinationData.restaurants[i % destinationData.restaurants.length];
@@ -164,7 +164,7 @@ document.getElementById('itinerary-form').addEventListener('submit', function(ev
     hotelsCard.innerHTML = `
         <h2><img src="https://img.icons8.com/ios-filled/50/000000/bed.png" class="icon" alt="hotel icon" style="filter: none; width: 32px; height: 32px; margin-right: 12px; vertical-align: bottom;">Hotel Recommendations</h2>
         <ul>
-            ${destinationData.hotels.map(hotel => `<li>${hotel}</li>`).join('')}
+            ${destinationData.hotels.map(hotel => `<li><a href="${hotel.bookingLink}" target="_blank">${hotel.name}</a></li>`).join('')}
         </ul>
     `;
     resultsDiv.appendChild(hotelsCard);
