@@ -1,27 +1,27 @@
 const mockData = {
     paris: {
         attractions: [
-            { name: 'Eiffel Tower', description: 'Iconic wrought-iron lattice tower on the Champ de Mars.' },
-            { name: 'Louvre Museum', description: 'The world\'s largest art museum and a historic monument.' },
-            { name: 'Notre-Dame Cathedral', description: 'A medieval Catholic cathedral on the \u00cele de la Cit\u00e9.' },
-            { name: 'Mus\u00e9e d\'Orsay', description: 'Housed in a former railway station, it holds mainly French art dating from 1848 to 1914.' },
-            { name: 'Sainte-Chapelle', description: 'A royal chapel in the Gothic style, within the medieval Palais de la Cit\u00e9.' },
-            { name: 'Montmartre', description: 'A large hill in Paris\'s 18th arrondissement, known for its artistic history.' },
-            { name: 'Sacr\u00e9-C\u0153ur Basilica', description: 'A Roman Catholic church and minor basilica, dedicated to the Sacred Heart of Jesus.' },
+            { name: 'Eiffel Tower', description: 'Iconic wrought-iron lattice tower on the Champ de Mars.', image: 'https://via.placeholder.com/200x150?text=Eiffel+Tower' },
+            { name: 'Louvre Museum', description: 'The world\'s largest art museum and a historic monument.', image: 'https://via.placeholder.com/200x150?text=Louvre+Museum' },
+            { name: 'Notre-Dame Cathedral', description: 'A medieval Catholic cathedral on the Île de la Cité.', image: 'https://via.placeholder.com/200x150?text=Notre-Dame' },
+            { name: 'Musée d\'Orsay', description: 'Housed in a former railway station, it holds mainly French art dating from 1848 to 1914.', image: 'https://via.placeholder.com/200x150?text=Musee+Orsay' },
+            { name: 'Sainte-Chapelle', description: 'A royal chapel in the Gothic style, within the medieval Palais de la Cité.', image: 'https://via.placeholder.com/200x150?text=Sainte-Chapelle' },
+            { name: 'Montmartre', description: 'A large hill in Paris\'s 18th arrondissement, known for its artistic history.', image: 'https://via.placeholder.com/200x150?text=Montmartre' },
+            { name: 'Sacré-Cœur Basilica', description: 'A Roman Catholic church and minor basilica, dedicated to the Sacred Heart of Jesus.', image: 'https://via.placeholder.com/200x150?text=Sacre-Coeur' },
         ],
-        cafes: ['Caf\u00e9 de Flore', 'Les Deux Magots', 'La Maison Rose'],
-        restaurants: ['Le Jules Verne', 'L\'Ambroisie', 'Arp\u00e8ge'],
+        cafes: ['Café de Flore', 'Les Deux Magots', 'La Maison Rose'],
+        restaurants: ['Le Jules Verne', 'L\'Ambroisie', 'Arpège'],
         hotels: ['The Ritz Paris', 'Le Bristol Paris', 'Four Seasons Hotel George V']
     },
     tokyo: {
         attractions: [
-            { name: 'Senso-ji Temple', description: 'An ancient Buddhist temple located in Asakusa.' },
-            { name: 'Meiji Jingu Shrine', description: 'A Shinto shrine dedicated to the deified spirits of Emperor Meiji and his consort, Empress Shoken.' },
-            { name: 'Tokyo Skytree', description: 'A broadcasting and observation tower with a restaurant and observation decks.' },
-            { name: 'Shibuya Crossing', description: 'The world\'s busiest pedestrian crossing, located in front of Shibuya Station.' },
-            { name: 'Tokyo Imperial Palace', description: 'The primary residence of the Emperor of Japan.' },
-            { name: 'Ghibli Museum', description: 'A museum showcasing the work of the Japanese animation studio Studio Ghibli.' },
-            { name: 'Ueno Park', description: 'A large public park in the Ueno district of Tait\u014d, Tokyo, Japan.' },
+            { name: 'Senso-ji Temple', description: 'An ancient Buddhist temple located in Asakusa.', image: 'https://via.placeholder.com/200x150?text=Senso-ji' },
+            { name: 'Meiji Jingu Shrine', description: 'A Shinto shrine dedicated to the deified spirits of Emperor Meiji and his consort, Empress Shoken.', image: 'https://via.placeholder.com/200x150?text=Meiji+Jingu' },
+            { name: 'Tokyo Skytree', description: 'A broadcasting and observation tower with a restaurant and observation decks.', image: 'https://via.placeholder.com/200x150?text=Tokyo+Skytree' },
+            { name: 'Shibuya Crossing', description: 'The world\'s busiest pedestrian crossing, located in front of Shibuya Station.', image: 'https://via.placeholder.com/200x150?text=Shibuya+Crossing' },
+            { name: 'Tokyo Imperial Palace', description: 'The primary residence of the Emperor of Japan.', image: 'https://via.placeholder.com/200x150?text=Imperial+Palace' },
+            { name: 'Ghibli Museum', description: 'A museum showcasing the work of the Japanese animation studio Studio Ghibli.', image: 'https://via.placeholder.com/200x150?text=Ghibli+Museum' },
+            { name: 'Ueno Park', description: 'A large public park in the Ueno district of Taitō, Tokyo, Japan.', image: 'https://via.placeholder.com/200x150?text=Ueno+Park' },
         ],
         cafes: ['Caf\u00e9 de l\'Ambre', 'Chatei Hatou', 'Glitch Coffee & Roasters'],
         restaurants: ['Sukiyabashi Jiro', 'Narisawa', 'Quintessence'],
@@ -84,6 +84,7 @@ class ItineraryCard extends HTMLElement {
                 </div>
                  <div class="card-content">
                     <h3><img src="https://img.icons8.com/ios-filled/50/000000/marker.png" class="icon" alt="attraction icon">Attraction</h3>
+                    <img src="${data.attraction.image || 'https://via.placeholder.com/200x150?text=No+Image'}" alt="${data.attraction.name}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
                     <p><strong>${data.attraction.name}</strong>: ${data.attraction.description}</p>
                     <h3><img src="https://img.icons8.com/ios-filled/50/000000/coffee-to-go.png" class="icon" alt="cafe icon">Nearby Cafe</h3>
                     <p>${data.cafe}</p>

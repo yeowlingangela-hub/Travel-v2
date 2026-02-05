@@ -9,25 +9,28 @@ This project is a framework-less web application (HTML, CSS, JavaScript) designe
 - JavaScript functionality (main.js)
 - Integration with Firebase Studio development environment.
 - Git repository for version control.
-- "Recommended Hotels" section with placeholder data and images.
+- "Recommended Hotels" section with placeholder data and images, including simulated attraction proximity.
 
-## Plan for "Recommended Hotels" Feature - v2: Attraction Proximity
+## Plan for Itinerary Attractions & Images
 
 ### Objective
-Enhance the "Recommended Hotels" section to indicate that hotels are within 40 km of a suggested attraction. This will involve updating the displayed hotel information and simulating distance. The changes will be pushed to the GitHub repository and reflected on Cloudflare Pages.
+Ensure that every day in the generated travel itinerary has a recommended attraction with a relevant image. The changes will be committed, pushed to the GitHub repository, and reflected on Cloudflare Pages.
 
 ### Assumptions
-1.  **Locations & Attractions**: I will assume a few popular travel destinations (Paris, Tokyo, New York) and choose a prominent attraction for each (e.g., Eiffel Tower, Tokyo Tower, Statue of Liberty).
-2.  **Distance Simulation**: I cannot perform real-time geographical distance calculations. I will *simulate* the "within 40 km" requirement by hardcoding a "nearest_attraction" and "distance_km" property for each hotel, ensuring the distance is less than 40km.
-3.  **Images**: Placeholder images will continue to be used. I will provide comments in the code where actual image URLs should be placed.
-4.  **Implementation Style**: I will follow the modern web standards (HTML, CSS, JavaScript) and leverage Web Components if appropriate for reusability, as outlined in `GEMINI.md`.
+1.  **Dynamic Itinerary Generation**: The itinerary results are generated dynamically via `main.js` and displayed in the `<div id="itinerary-results"></div>` section of `index.html`.
+2.  **Attraction Generation**: Since real-time API calls for attractions are not available, I will implement a placeholder mechanism in `main.js` to assign a generic "attraction" for each day. This will be a simple, illustrative attraction name.
+3.  **Image Sourcing**: For attraction images, I will use generic placeholder image URLs. I will include comments where actual image URLs could be placed.
+4.  **Implementation Style**: I will continue to adhere to modern web standards (HTML, CSS, JavaScript) as outlined in `GEMINI.md`.
 5.  **Cloudflare Pages**: It is assumed that the GitHub repository is already connected to Cloudflare Pages for automatic deployments upon push.
 
 ### Steps
 1.  **Update blueprint.md**: (Already doing this)
-2.  **Update index.html**:
-    *   Modify existing `hotel-card` elements to include information about the nearest attraction and its simulated distance (e.g., "Near Eiffel Tower (15 km)").
-3.  **Update style.css**:
-    *   Add or adjust styles for the new attraction and distance information within the `hotel-card` to maintain visual appeal and readability.
-4.  **Review and Verify**: Check the changes in a local preview to ensure correctness and visual appeal.
-5.  **Commit and Push**: Commit the changes to the Git repository with a clear commit message and push to the `main` branch.
+2.  **Examine `main.js`**: Review the existing itinerary generation logic to identify the best point to inject attraction and image data.
+3.  **Modify `main.js`**:
+    *   Locate the function responsible for creating or populating itinerary days.
+    *   For each day, add a placeholder attraction name (e.g., "Exploring the City Center", "Cultural Experience") and a placeholder image URL (e.g., `https://via.placeholder.com/150?text=Attraction`).
+    *   Ensure these are injected into the HTML structure of each itinerary day.
+4.  **Update `style.css` (if necessary)**:
+    *   Add or adjust CSS rules to properly display the attraction name and image within each itinerary day card.
+5.  **Review and Verify**: Test the itinerary generation to ensure attractions and images are present for each day.
+6.  **Commit and Push**: Commit the changes to the Git repository with a clear commit message and push to the `main` branch.
